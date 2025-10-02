@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Supreme Council of the House of Jacob M365 Portal</title>
+  <style>
+    :root {
+      --brand:#781f1f;
+      --bg:#f4f6f8;
+      --card:#ffffff;
+      --text:#333333;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+    }
+    header {
+      background-color: var(--brand);
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+    header img { max-height: 100px; margin-bottom: 1rem; }
+    .container { max-width: 1000px; margin: 2rem auto; padding: 0 1rem; }
+    .section { margin-bottom: 2rem; }
+    .app-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 1rem;
+    }
+    .app-tile {
+      background: var(--card);
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease, box-shadow .2s ease;
+      text-decoration: none;
+      color: inherit;
+    }
+    .app-tile:hover { transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.12); }
+    .app-tile img { width: 80px; height: auto; margin-bottom: 0.5rem; }
+    .announcement { background: var(--card); padding: 1rem; border-left: 5px solid var(--brand); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    a { color: var(--brand); }
+
+    /* --- Simple Password Gate --- */
+    #gate {
+      position: fixed; inset: 0; display: grid; place-items: center; background: rgba(0,0,0,0.08);
+      backdrop-filter: blur(2px); z-index: 9999;
+    }
+    #gate .panel {
+      width: min(92vw, 420px); background: #fff; border-radius: 12px; padding: 1.25rem; box-shadow: 0 10px 24px rgba(0,0,0,.15);
+    }
+    #gate h2 { margin: 0 0 .5rem; color: var(--brand); }
+    #gate .hint { font-size: .9rem; color: #555; margin-bottom: .75rem; }
+    #gate input[type="password"]{ width: 100%; padding: .75rem .9rem; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem; }
+    #gate button { margin-top: .75rem; width: 100%; padding: .75rem .9rem; border: 0; border-radius: 8px; background: var(--brand); color: #fff; font-weight: 700; cursor: pointer; }
+    #gate .error { margin-top: .5rem; color: #b00020; font-size: .9rem; display: none; }
+    #gate .logo { display:block; margin:0 auto .5rem; max-height:72px; }
+  </style>
+</head>
+<body>
+
+  <!-- Password Gate (client-side; for light protection only) -->
+  <div id="gate" aria-modal="true" role="dialog">
+    <div class="panel">
+      <img class="logo" src="logo.png" alt="Supreme Council Logo">
+      <h2>SCHOJ Portal Access</h2>
+      <div class="hint">Enter the access password to continue.</div>
+      <input id="pw" type="password" placeholder="Access password" autocomplete="current-password"/>
+      <button id="enter">Enter</button>
+      <div id="err" class="error">Incorrect password. Please try again.</div>
+    </div>
+  </div>
+
+  <header>
+    <img src="logo.png" alt="Supreme Council Logo" />
+    <h1>Welcome to The Supreme Council of the House of Jacob</h1>
+    <p>This portal provides centralized access to Microsoft 365 tools and resources for church operations, leadership, and communication.</p>
+  </header>
+
+  <div class="container">
+    <section class="section">
+      <h2>Quick Access</h2>
+      <div class="app-grid">
+        <a class="app-tile" href="https://outlook.office365.com" target="_blank" rel="noopener">
+          <img src="https://img.icons8.com/color/48/microsoft-outlook-2019.png" alt="Outlook"/>
+          <div>Outlook</div>
+        </a>
+        <a class="app-tile" href="https://teams.microsoft.com" target="_blank" rel="noopener">
+          <img src="https://img.icons8.com/color/48/microsoft-teams.png" alt="Teams"/>
+          <div>Teams</div>
+        </a>
+        <a class="app-tile" href="https://www.office.com/launch/word" target="_blank" rel="noopener">
+          <img src="https://img.icons8.com/color/48/ms-word.png" alt="Word"/>
+          <div>Word</div>
+        </a>
+        <a class="app-tile" href="https://www.office.com/launch/excel" target="_blank" rel="noopener">
+          <img src="https://img.icons8.com/color/48/ms-excel.png" alt="Excel"/>
+          <div>Excel</div>
+        </a>
+        <a class="app-tile" href="https://onedrive.office.com" target="_blank" rel="noopener">
+          <img src="https://img.icons8.com/color/48/cloud.png" alt="OneDrive"/>
+          <div>OneDrive</div>
+        </a>
+        <a class="app-tile" href="https://schoj.myshelby.org/" target="_blank" rel="noopener">
+          <img src="shelby-financials-logo.png" alt="Ministry Brands / Giving"/>
+          <div>Ministry Brands / Giving</div>
+        </a>
+        <a class="app-tile" href="https://schoj.myshelby.org/" target="_blank" rel="noopener">
+          <img src="shelby-financials-logo.png" alt="Shelby Financials"/>
+          <div>Shelby Financials</div>
+        </a>
+        <!-- HQ Reconciliation tile has been removed -->
+        <a class="app-tile" href="https://www.office.com/apps" target="_blank" rel="noopener">
+          <img src="https://img.icons8.com/color/48/microsoft.png" alt="All Apps"/>
+          <div>All Apps</div>
+        </a>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Announcements</h2>
+      <div class="announcement">
+        <h3>Monthly Update – October 2025</h3>
+        <p>If you have any questions or need assistance, please contact the IT Committee at 
+        <a href="mailto:ITCommittee@schoj.com" style="color: var(--brand); text-decoration: underline; font-weight: bold;">ITCommittee@schoj.com</a>.
+        </p>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // Lightweight client-side gate (improves casual privacy only).
+    // For sensitive data, use a proper identity provider or a reverse proxy with access controls.
+    (function(){
+      const gate = document.getElementById('gate');
+      const err = document.getElementById('err');
+      const input = document.getElementById('pw');
+      const btn = document.getElementById('enter');
+
+      // SHA-256 hash of the access password: SCHOJ-October-2025!
+      const HASH = '87c718ca904003696e1264bb8223882a731ecf517bd63a121379c21a25f9d580';
+
+      if (sessionStorage.getItem('schoj_portal_ok') === '1') {
+        gate.style.display = 'none';
+      }
+
+      async function sha256(text){
+        const enc = new TextEncoder();
+        const data = enc.encode(text);
+        const digest = await crypto.subtle.digest('SHA-256', data);
+        return Array.from(new Uint8Array(digest)).map(b=>b.toString(16).padStart(2,'0')).join('');
+      }
+
+      async function check(){
+        const guess = input.value || '';
+        const ghash = await sha256(guess);
+        if (ghash === HASH){
+          sessionStorage.setItem('schoj_portal_ok','1');
+          gate.style.display = 'none';
+        } else {
+          err.style.display = 'block';
+          input.select();
+        }
+      }
+
+      btn.addEventListener('click', check);
+      input.addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ check(); }});
+      input.focus();
+    })();
+  </script>
+</body>
+</html>
